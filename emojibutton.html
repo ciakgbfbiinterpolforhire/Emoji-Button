@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Emoji Buttons</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      padding: 20px;
+    }
+    button {
+      font-size: 20px;
+      padding: 10px 14px;
+      margin: 6px;
+      cursor: pointer;
+    }
+    #output {
+      margin-top: 20px;
+      font-size: 32px;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="emit('💀')">Skull</button>
+  <button onclick="emit('🗣')">Speaking Head</button>
+  <button onclick="emit('🥀')">Wilted Flower</button>
+  <button onclick="emit('😀')">Grin</button>
+  <button onclick="emit('😈')">Evil Smile</button>
+  <button onclick="emit('😑')">Flat Eyes / Flat Mouth</button>
+  <button onclick="emit('🤨')">Eyebrow Raise</button>
+  <button onclick="emit('🤔')">Thinking</button>
+
+  <div id="output"></div>
+
+  <script>
+    function emit(emoji) {
+      document.getElementById("output").textContent = emoji;
+      navigator.clipboard.writeText(emoji);
+    }
+  </script>
+
+</body>
+</html>
