@@ -1,44 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Emoji Buttons</title>
-  <style>
-    body {
-      font-family: system-ui, sans-serif;
-      padding: 20px;
-    }
-    button {
-      font-size: 20px;
-      padding: 10px 14px;
-      margin: 6px;
-      cursor: pointer;
-    }
-    #output {
-      margin-top: 20px;
-      font-size: 32px;
-    }
-  </style>
+<meta charset="UTF-8">
+<title>Emoji Cube</title>
+
+<style>
+  body {
+    font-family: system-ui, sans-serif;
+    background: #0f1115;
+    color: white;
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    margin: 0;
+  }
+
+  .container {
+    display: grid;
+    gap: 18px;
+    justify-items: center;
+  }
+
+  .cube {
+    display: grid;
+    grid-template-columns: repeat(3, 80px);
+    gap: 12px;
+    padding: 18px;
+    background: #1a1d24;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  }
+
+  button {
+    width: 80px;
+    height: 80px;
+    font-size: 30px;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    background: #2a2f3a;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    background: #3a4150;
+    transform: scale(1.08);
+  }
+
+  #output {
+    width: 120px;
+    height: 120px;
+    display: grid;
+    place-items: center;
+    font-size: 48px;
+    background: #1a1d24;
+    border-radius: 18px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.6);
+  }
+</style>
 </head>
+
 <body>
 
-  <button onclick="emit('💀')">Skull</button>
-  <button onclick="emit('🗣')">Speaking Head</button>
-  <button onclick="emit('🥀')">Wilted Flower</button>
-  <button onclick="emit('😀')">Grin</button>
-  <button onclick="emit('😈')">Evil Smile</button>
-  <button onclick="emit('😑')">Flat Eyes / Flat Mouth</button>
-  <button onclick="emit('🤨')">Eyebrow Raise</button>
-  <button onclick="emit('🤔')">Thinking</button>
+<div class="container">
+
+  <div class="cube">
+    <button onclick="emit('💀')">💀</button>
+    <button onclick="emit('🗣')">🗣</button>
+    <button onclick="emit('🥀')">🥀</button>
+    <button onclick="emit('😀')">😀</button>
+    <button onclick="emit('😈')">😈</button>
+    <button onclick="emit('😑')">😑</button>
+    <button onclick="emit('🤨')">🤨</button>
+    <button onclick="emit('🤔')">🤔</button>
+    <button onclick="emit('✨')">✨</button>
+  </div>
 
   <div id="output"></div>
 
-  <script>
-    function emit(emoji) {
-      document.getElementById("output").textContent = emoji;
-      navigator.clipboard.writeText(emoji);
-    }
-  </script>
+</div>
+
+<script>
+function emit(emoji) {
+  document.getElementById("output").textContent = emoji;
+  navigator.clipboard.writeText(emoji);
+}
+</script>
 
 </body>
 </html>
