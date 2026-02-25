@@ -19,6 +19,14 @@
     display: grid;
     gap: 18px;
     justify-items: center;
+    text-align: center;
+  }
+
+  .info {
+    font-size: 18px;
+    opacity: 0.85;
+    height: 24px; /* prevents layout shift */
+    transition: 0.2s;
   }
 
   .cube {
@@ -64,8 +72,9 @@
 
 <div class="container">
 
+  <div class="info" id="info">Click an emoji to copy it</div>
+
   <div class="cube">
-    <!-- OLD -->
     <button onclick="emit('💀')">💀</button>
     <button onclick="emit('🗣')">🗣</button>
     <button onclick="emit('🥀')">🥀</button>
@@ -75,7 +84,6 @@
     <button onclick="emit('🤨')">🤨</button>
     <button onclick="emit('🤔')">🤔</button>
 
-    <!-- NEW -->
     <button onclick="emit('✅')">✅</button>
     <button onclick="emit('❌')">❌</button>
     <button onclick="emit('❤️‍🩹')">❤️‍🩹</button>
@@ -91,9 +99,19 @@
 </div>
 
 <script>
+let timer;
+
 function emit(emoji) {
   document.getElementById("output").textContent = emoji;
   navigator.clipboard.writeText(emoji);
+
+  const info = document.getElementById("info");
+  info.textContent = "Copied ✅";
+
+  clearTimeout(timer);
+  timer = setTimeout(() => {
+    info.textContent = "Click an emoji to copy it";
+  }, 1500);
 }
 </script>
 
